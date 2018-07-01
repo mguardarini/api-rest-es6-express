@@ -1,6 +1,9 @@
 import {connection} from '../connection';
 import Sequelize from "sequelize";
 
+/**
+ * Schema of table;
+ */
 export const telemetriadriverseniors = connection.define('telemetriadriverseniors', {
 
     hardwareId:Sequelize.INTEGER,
