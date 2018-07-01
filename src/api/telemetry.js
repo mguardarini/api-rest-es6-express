@@ -1,8 +1,6 @@
 import resource from 'resource-router-middleware';
 import telemetry from '../models/telemetry';
-import {companies,connection} from '../database/connection.js';
-import {Insert} from '../database/queries.js';
-import Sequelize from "sequelize";
+import {Insert,Select} from '../database/queries.js';
 
 export default ({ config, db }) => resource({
 
@@ -20,8 +18,7 @@ export default ({ config, db }) => resource({
 
 	/** GET / - List all entities */
 	index({ params }, res) {
-		connection.query("SELECT * FROM telemetriadriverseniors", { type:Sequelize.QueryTypes.SELECT})
-		.then(properties => {
+		Select("telemetriadriverseniors").then(properties => {
 			res.json(properties);
     	})	
 	},

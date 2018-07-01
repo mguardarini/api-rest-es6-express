@@ -22,8 +22,20 @@ export function Insert(data){
         data_.save();
          
     } catch (error) {
-        console.log(error)
+        
+        console.log(error);
+        return(500);
     }   
     
+}
+
+export function Select(params){
+
+   try {
+      return connection.query("SELECT * FROM "+params, { type:Sequelize.QueryTypes.SELECT});    
+   } catch (error) {
+      return (500); 
+   } 
+   
 }
 
