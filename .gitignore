@@ -4,3 +4,4 @@
 /node_modules
 .DS_Store
 ./src/database/config.js
+./InstallService.js
