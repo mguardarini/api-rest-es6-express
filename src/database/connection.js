@@ -15,7 +15,9 @@ export const connection = new Sequelize(
     }
 });
 
-const conn = connection.authenticate()
+const testConnection = () => { 
+    
+    connection.authenticate()
     .then(()=>{
         console.log("Connection with Mysql Database");
     })
@@ -23,3 +25,6 @@ const conn = connection.authenticate()
         console.log("Don't Work.");
     })
     .done();
+}
+
+testConnection();
