@@ -2,7 +2,7 @@ import resource from 'resource-router-middleware';
 import telemetry from '../models/telemetry';
 import {Insert,Select} from '../database/queries.js';
 
-export default ({ config, db }) => resource({
+export default () => resource({
 
 	/** Property name to store preloaded entity on `request`. */
 	id : 'telemetry',
