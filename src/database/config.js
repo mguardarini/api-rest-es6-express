@@ -1,6 +1,6 @@
 const host = "";
 const port = 3067;
-const user = "root";
+const user = "";
 const password = "";
 const database = "";
 const dialect = "mysql";
