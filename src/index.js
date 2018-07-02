@@ -1,6 +1,5 @@
 import http from 'http';
 import https from 'https';
-
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -9,7 +8,7 @@ import bodyParser from 'body-parser';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
-import {options} from './encryption/certificate';
+import {options} from './encryption/certificates/certificate';
 
 
 let app = express();

@@ -34,6 +34,7 @@
     "body-parser": "^1.13.3",
     "compression": "^1.5.2",
     "cors": "^2.7.1",
+    "crypto": "^1.0.1",
     "express": "^4.13.3",
     "fs": "0.0.1-security",
     "https": "^1.0.0",

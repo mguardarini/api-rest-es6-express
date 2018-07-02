@@ -1,6 +1,7 @@
 import resource from 'resource-router-middleware';
 import telemetry from '../models/telemetry';
 import {Insert,Select} from '../database/queries.js';
+import {match} from '../encryption/hash/encrypt_decrypt';
 
 export default () => resource({
 
@@ -26,26 +27,32 @@ export default () => resource({
 	/** POST / - Create a new entity */
 	create({ body }, res) {
 
-		let data = {
-				
-				hardwareId: body.hardwareId,
-				externalIP: body.externalIP,
-				driverType: body.numDevices,
-				numManagerDevices: body.numManagerDevices,
-				countSinceAppStart: body.countSinceAppStart,
-				reason: body.reason,
-				aditionalInfo: body.aditionalInfo,
-				version: body.version 
-		 
-		}
-		if(typeof(data.hardwareId)!='undefined'){
-			Insert(data);
-			res.json(body);
-		}
-		else{
-			res.sendStatus(404)
-		}
-		
+		let key = body.session;
+
+		try {
+			if(match(key)==200){
+				let data = {
+					
+					hardwareId: body.hardwareId,
+					externalIP: body.externalIP,
+					driverType: body.numDevices,
+					numManagerDevices: body.numManagerDevices,
+					countSinceAppStart: body.countSinceAppStart,
+					reason: body.reason,
+					aditionalInfo: body.aditionalInfo,
+					version: body.version 
+				}
+				if(typeof(data.hardwareId)!='undefined'){
+					Insert(data);
+					res.json(body);
+				}
+				else{
+					res.sendStatus(400)
+				}
+			}	
+		} catch (error) {
+			res.sendStatus(511);	
+		}	
 	},
 
 	/** GET /:id - Return a given entity */
