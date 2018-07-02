@@ -42,7 +42,11 @@ const server = () => {
 	// api status;
 	app.get('/status',function(req,res){
 
-		res.send("<h1>Date: "+ Date() + "</h1><br><h2>Status:<h3 background-color='green'>Everything right;</h3> </h2>");
+		let data = {
+			date: Date(),
+			status:"Everything Right!"
+		}
+		res.json(data);
 
 	});
 
