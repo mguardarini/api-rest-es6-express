@@ -1,8 +1,8 @@
-const host = "";
+const host = "127.0.0.1";
 const port = 3067;
-const user = "";
-const password = "";
-const database = "";
+const user = "root";
+const password = "root";
+const database = "telemetria";
 const dialect = "mysql";
 
 export default {

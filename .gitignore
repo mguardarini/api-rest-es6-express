@@ -5,3 +5,7 @@
 .DS_Store
 ./src/database/config.js
 ./InstallService.js
+
+*.crt
+*.csr
+*.key
