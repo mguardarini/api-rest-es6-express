@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import initializeDb from './db';
+// import initializeDb from './db';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
@@ -24,23 +24,25 @@ app.use(bodyParser.json({
 }));
 
 // connect to db
-initializeDb( db => {
+const server = () => {
 
 	// internal middleware
-	app.use(middleware({ config, db }));
+	app.use(middleware({ config }));
 
 	// api router
-	app.use('/api', api({ config, db }));
+	app.use('/api', api({ config }));
 
 	app.get('/status',function(req,res){
 
-		res.send("Status: "+ Date.getUTCDate());
+		res.send("Status: "+ Date());
 
 	});
 
 	app.server.listen(process.env.PORT || config.port, () => {
 		console.log(`Started on port ${app.server.address().port}`);
 	});
-});
+};
+
+server();
 
 export default app;
