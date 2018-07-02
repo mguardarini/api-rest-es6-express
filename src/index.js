@@ -39,16 +39,6 @@ const server = () => {
 
 	// api router
 	app.use('/api', api({ config }));
-	// api status;
-	app.get('/status',function(req,res){
-
-		let data = {
-			date: Date(),
-			status:"Everything Right!"
-		}
-		res.json(data);
-
-	});
 
 	app.server.listen(config.port_https, () => {
 		console.log(`Started on port ${app.server.address().port}`);
