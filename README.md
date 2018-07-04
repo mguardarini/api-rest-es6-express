@@ -1,6 +1,5 @@
 Express & ES6 REST API Boilerplate
 ==================================
-![Build Status](https://circleci.com/gh/apollographql/apollo-cache-control-js.svg?style=svg)
 
 This is a straightforward boilerplate for building REST APIs with ES6 and Express.
 
