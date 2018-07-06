@@ -30,8 +30,6 @@ const match = (data)=>{
     }
 }
 
-
-
 export {
     match
 }

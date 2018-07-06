@@ -14,6 +14,7 @@ export const telemetriadriverseniors = connection.define('telemetriadriversenior
     countSinceAppStart:Sequelize.INTEGER,
     reason:Sequelize.INTEGER,
     aditionalInfo: Sequelize.STRING,
+    dateTime:Sequelize.DATE,
     version: Sequelize.STRING,
     id: {
         type:Sequelize.INTEGER,

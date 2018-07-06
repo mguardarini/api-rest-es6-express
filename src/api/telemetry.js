@@ -19,38 +19,65 @@ export default () => resource({
 
 	/** GET / - List all entities */
 	index({ params }, res) {
-		Select("telemetriadriverseniors").then(properties => {
-			res.json(properties);
-    	})	
+
+		let key = res.req.headers.authorization;
+		
+		try {
+			if(match(key)==200){
+
+				Select("telemetriadriverseniors").then(properties => {
+					res.json(properties);
+				})	
+			}
+			else{	
+				/**
+				 * 511 Network Authentication Required
+				 * The 511 status code indicates that the client needs to authenticate to gain network access.
+				 */
+				res.sendStatus(511)
+			}
+			
+		}catch(error){
+			res.sendStatus(500)
+		}
 	},
 
 	/** POST / - Create a new entity */
 	create({ body }, res) {
 
-		let key = body.session;
+		let key = res.req.headers.authorization.split(" ");
 
 		try {
-			if(match(key)==200){
+			if(match(key[1])==200){
 				let data = {
 					
 					hardwareId: body.hardwareId,
 					externalIP: body.externalIP,
-					driverType: body.numDevices,
+					driverType: body.driverType,
 					numManagerDevices: body.numManagerDevices,
 					countSinceAppStart: body.countSinceAppStart,
 					reason: body.reason,
 					aditionalInfo: body.aditionalInfo,
-					version: body.version 
+					version: body.version, 
+					dateTime: body.dateTime
 				}
 				if(typeof(data.hardwareId)!='undefined'){
 					Insert(data);
 					res.json(body);
 				}
 				else{
+					/**
+					 * 400 Bad Request
+					 * This response means that server could not understand the request due to invalid syntax.
+					 */
 					res.sendStatus(400)
 				}
 			}	
 		} catch (error) {
+			/**
+			 * 511 Network Authentication Required
+			 * The 511 status code indicates that the client needs to authenticate to gain network access.
+			 */
 			res.sendStatus(511);	
 		}	
 	},

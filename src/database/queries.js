@@ -10,12 +10,13 @@ export function Insert(data){
 
             hardwareId: data.hardwareId,
             externalIP: data.externalIP,
-            driverType: data.numDevices,
+            driverType: data.driverType,
             numManagerDevices: data.numManagerDevices,
             countSinceAppStart: data.countSinceAppStart,
             reason: data.reason,
             aditionalInfo: data.aditionalInfo,
-            version: data.version 
+            version: data.version,
+            dateTime: data.dateTime 
     
         });
         //Inserting Data into database
