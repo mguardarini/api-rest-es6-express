@@ -1,21 +1,14 @@
 import {connection} from './connection';
-import {telemetriadriverseniors} from './model/telemetriadriverseniors'
+import {telemetry} from './model/telemetry'
 import Sequelize from "sequelize";
 
 export function Insert(data){
 
     // console.log(data);
     try {
-        var data_ = telemetriadriverseniors.build({
+        var data_ = telemetry.build({
 
             hardwareId: data.hardwareId,
-            externalIP: data.externalIP,
-            driverType: data.driverType,
-            numManagerDevices: data.numManagerDevices,
-            countSinceAppStart: data.countSinceAppStart,
-            reason: data.reason,
-            aditionalInfo: data.aditionalInfo,
-            version: data.version,
             dateTime: data.dateTime 
     
         });

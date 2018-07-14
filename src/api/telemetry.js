@@ -25,7 +25,7 @@ export default () => resource({
 		try {
 			if(match(key)==200){
 
-				Select("telemetriadriverseniors").then(properties => {
+				Select("Telemetry").then(properties => {
 					res.json(properties);
 				})	
 			}
@@ -52,13 +52,6 @@ export default () => resource({
 				let data = {
 					
 					hardwareId: body.hardwareId,
-					externalIP: body.externalIP,
-					driverType: body.driverType,
-					numManagerDevices: body.numManagerDevices,
-					countSinceAppStart: body.countSinceAppStart,
-					reason: body.reason,
-					aditionalInfo: body.aditionalInfo,
-					version: body.version, 
 					dateTime: body.dateTime
 				}
 				if(typeof(data.hardwareId)!='undefined'){
