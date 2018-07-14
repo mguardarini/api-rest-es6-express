@@ -46,16 +46,35 @@ Use this method if you already have a private key and CSR, and you want to gener
 
 This command creates a self-signed certificate (domain.crt) from an existing private key (domain.key) and (domain.csr):
 
+Primary Certificate
+
 ``
 openssl x509 \
-       -signkey domain.key \
-       -in domain.csr \
-       -req -days 365 -out domain.crt
+       -signkey private.key \
+       -in mydomain.csr \
+       -req -days 365 -out primary.crt
+The -days 365 
+``
+
+Intermediate Certificate
+
+``
+openssl x509 \
+       -signkey private.key \
+       -in mydomain.csr \
+       -req -days 365 -out intermediate.crt
 The -days 365 
 ``
 
 The option(-days) specifies that the certificate will be valid for 365 days
 
+### Create Test Database
+
+For this example i using MySQL database, so, to test you need to create a database with the name "Test" and create one table with the name "Telemetry".
+
+ 1. CREATE DATABASE Test; 
+ 2. use Test;
+ 3. CREATE TABLE Telemetry (hardwareId varchar(30), date dateTime, id int auto_increment primary key);
 
 # References:
 
