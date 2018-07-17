@@ -1,6 +1,8 @@
-Express & ES6 REST API Boilerplate
-==================================
+ &middot;[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)]() ![npm version](https://img.shields.io/npm/v/react.svg?style=flat)
 
+
+Express & ES6 REST API Boilerplate
+================================== 
 This is a straightforward boilerplate for building REST APIs with ES6 and Express.
 
 - ES6 support via [babel](https://babeljs.io)
