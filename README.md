@@ -51,21 +51,15 @@ This command creates a self-signed certificate (domain.crt) from an existing pri
 Primary Certificate
 
 ``
-openssl x509 \
-       -signkey private.key \
-       -in mydomain.csr \
-       -req -days 365 -out primary.crt
-The -days 365 
+openssl x509 -req -days 365 -in mydomain.csr -signkey private.key -out primary.crt
+
 ``
 
 Intermediate Certificate
 
 ``
-openssl x509 \
-       -signkey private.key \
-       -in mydomain.csr \
-       -req -days 365 -out intermediate.crt
-The -days 365 
+openssl x509 -req -days 365 -in mydomain.csr -signkey private.key -out intermediate.crt
+
 ``
 
 The option(-days) specifies that the certificate will be valid for 365 days
